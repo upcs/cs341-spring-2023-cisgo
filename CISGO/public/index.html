@@ -1,5 +1,5 @@
-<!Author: Alexander Melemai
-Date: 2/8/23
+<!Author: Alexander Melemai, Grant Stone
+Date: 2/15/23
 Course: Software Engineering>
 <!DOCTYPE html>
 <html>
@@ -10,12 +10,29 @@ Course: Software Engineering>
 </head>
 <body>
 
-    <h1>CISGO Interactive Map</h1>
+    <h1><center>CISGO Interactive Map</center></h1>
+    
+    <!--The div element for the map --> 
+    <div id="map"></div>
+    <script>
+      const up = { lat: 45.57333, lng: -122.72747 };
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: up,
+          zoom: 11
+        });
+        const marker = new google.maps.Marker({
+		  position: up,
+		  map: map,
+	     });
+      }
+    </script>
 
-    <!image of cheesecake lol>
-    <img src="https://www.nationsonline.org/maps/Political-World-Map-3360.jpg"
-         alt="Girl in a jacket" width="500" height="300">
-
+	<script
+      src="https://maps.googleapis.com/maps/api/js?key=XXXX&callback=initMap&v=weekly"
+      defer
+	></script>
 </body>
 </html>
 
