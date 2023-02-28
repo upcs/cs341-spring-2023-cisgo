@@ -11,46 +11,112 @@ Course: Software Engineering>
 <body>
 
     <h1><center>CISGO Interactive Map</center></h1>
-    
-    <!--The div element for the map --> 
-    <div id="map"></div>
-    <script>
-	const up = { lat: 45.57333, lng: -122.72747 };
-	const contentString = 
-		'<div id="content">' + 
-		'<div id="siteNotice">' +
-		"</div>" +
-		'<h1 id="firstHeading" class="firstHeading">University of Portland</h1>' +
-		"</div>";
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: up,
-          zoom: 3
-        });
-        const marker = new google.maps.Marker({
-		  position: up,
-		  map: map,
-	     });
-	
-		const infowindow = new google.maps.InfoWindow({
-			content: contentString,
-			ariaLabel: "University of Portland",
-		});
-		marker.addListener("click", () => {
-			infowindow.open({
-        		anchor: marker,
-        		map,
-        	});
-        });
-      }
-    </script>
 
-	<script
-      src="https://maps.googleapis.com/maps/api/js?key=XXXX&callback=initMap&v=weekly"
-      defer
-	></script>
+	<!-- amChart Map code starts -->
+	<!-- Resources -->
+	<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+	
+	<!-- Chart code -->
+	<script>
+	am5.ready(function() {
+	
+	// Create root element
+	// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+	var root = am5.Root.new("chartdiv");
+	
+	
+	// Set themes
+	// https://www.amcharts.com/docs/v5/concepts/themes/
+	root.setThemes([
+	  am5themes_Animated.new(root)
+	]);
+	
+	
+	// Create the map chart
+	// https://www.amcharts.com/docs/v5/charts/map-chart/
+	var chart = root.container.children.push(am5map.MapChart.new(root, {
+	  panX: "rotateX",
+	  panY: "rotateY",
+	  projection: am5map.geoOrthographic()
+	}));
+	
+	
+	// Create series for background fill
+	// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+	var backgroundSeries = chart.series.push(
+	  am5map.MapPolygonSeries.new(root, {})
+	);
+	backgroundSeries.mapPolygons.template.setAll({
+	  fill: root.interfaceColors.get("alternativeBackground"),
+	  fillOpacity: 0.1,
+	  strokeOpacity: 0
+	});
+	backgroundSeries.data.push({
+	  geometry:
+	    am5map.getGeoRectangle(90, 180, -90, -180)
+	});
+	
+	
+	// Create main polygon series for countries
+	// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+	var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+	  geoJSON: am5geodata_worldLow 
+	}));
+	polygonSeries.mapPolygons.template.setAll({
+	  fill: root.interfaceColors.get("alternativeBackground"),
+	  fillOpacity: 0.15,
+	  strokeWidth: 0.5,
+	  stroke: root.interfaceColors.get("background")
+	});
+	
+	// Create point series
+	var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+	
+	pointSeries.data.setAll([{
+	  "geometry": {
+	    "type": "Point",
+	    "coordinates": [-73.778137, 40.641312]
+	  }
+	}, {
+	  "geometry": {
+	    "type": "Point",
+	    "coordinates": [-0.454296, 51.470020]
+	  }
+	}, {
+	  "geometry": {
+	    "type": "Point",
+	    "coordinates": [116.597504, 40.072498]
+	  }
+	}]);
+	
+	pointSeries.bullets.push(function() {
+	  return am5.Bullet.new(root, {
+	    sprite: am5.Circle.new(root, {
+	      radius: 5,
+	      fill: am5.color(0xffba00)
+	    })
+	  });
+	});
+
+	// Make stuff animate on load
+	chart.appear(1000, 100);
+	
+	}); // end am5.ready()
+	</script>
+	
+	<!-- HTML -->
+	<div id="chartdiv"></div>
+
+	
+	
+
 </body>
+
 </html>
+
+
 
 
