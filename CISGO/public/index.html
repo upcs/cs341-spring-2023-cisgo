@@ -25,21 +25,22 @@ Course: Software Engineering>
 	<script src="javascripts/chart.js"></script>
 	
 	<!-- HTML -->
-	<div id="chartdiv"></div>
-<table>
-     <tr>
-       <input type="radio" name="time" value="past"> Past
-       <br>
-       <input type="radio" name="time" value="present" checked> Present
-       <br>
-       <input type="radio" name="time" value="future"> Future
-     </tr>
-     <td>
-       <button class="button button1" >Study Abroad</button>
-       <button class="button button2">Teaching Abroad</button>
-       <button class="button button3">Research</button>
-       <button class="button button4">Service Work</button>
-     </td>
+	<div class="parent" id="chartdiv"></div>
+	
+<table class="child">
+     
+     
+       <tr><td><button class="button button1">Past</button></td></tr>
+       <tr><td><button class="button button2">Present</button></td></tr>
+       <tr><td><button class="button button3">Future</button></td></tr>
+       
+     
+</table>
+<table class="child2" >
+	<tr><td align="right"><button class="button button4">Study Abroad</button></td></tr>
+	<tr><td align="right"><button class="button button5">Teaching Abroad</button></td></tr>
+	<tr><td align="right"><button class="button button6">Research</button></td></tr>
+	<tr><td align="right"><button class="button button7">Service Work</button></td></tr>
 </table>
 	
 	
