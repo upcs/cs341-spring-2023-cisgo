@@ -63,7 +63,7 @@ am5.ready(function() {
 	    "type": "Point",
 	    "coordinates": [-0.454296, 51.470020]
 	  },
-	  "name": "[bold]Study Abroad\n" + "[unbold]London, UK\n" + "2001-Present\n" 
+	  "name": "[bold]Study Abroad\n" + "[unbold]London, UK\n" + "2001-Present\n" + "[underline]more"
 	}, {
 	  "geometry": {
 	    "type": "Point",
