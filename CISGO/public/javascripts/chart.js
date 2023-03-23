@@ -27,8 +27,8 @@ am5.ready(function() {
 	  am5map.MapPolygonSeries.new(root, {})
 	);
 	backgroundSeries.mapPolygons.template.setAll({
-	  fill: root.interfaceColors.get("alternativeBackground"),
-	  fillOpacity: 0.1,
+	  fill: am5.color(0x146DFF),
+	  fillOpacity: 0.2,
 	  strokeOpacity: 0
 	});
 	backgroundSeries.data.push({
@@ -43,9 +43,9 @@ am5.ready(function() {
 	  geoJSON: am5geodata_worldLow 
 	}));
 	polygonSeries.mapPolygons.template.setAll({
-	  fill: root.interfaceColors.get("alternativeBackground"),
+	  fill: am5.color(0x146DFF),
 	  fillOpacity: 0.15,
-	  strokeWidth: 0.5,
+	  strokeWidth: 0.25,
 	  stroke: root.interfaceColors.get("background")
 	});
 	
@@ -63,7 +63,7 @@ am5.ready(function() {
 	    "type": "Point",
 	    "coordinates": [-0.454296, 51.470020]
 	  },
-	  "name": "London"
+	  "name": "[bold]Study Abroad\n" + "[unbold]London, UK\n" + "2001-Present\n" 
 	}, {
 	  "geometry": {
 	    "type": "Point",
