@@ -71,14 +71,13 @@ am5.ready(function() {
 	  },
 	  "name": "Beijing"
 	}]);
-	/*var data;
+
     $.post("/db", {query: "SELECT * FROM csvjson"}, function(res, req, status) {
-        console.log(res);
+        console.log(res[0].TITLE);
         //pointSeries.data.setAll(res.body);
-		data = JSON.stringify(res);
     });
-	const pointData = JSON.parse(data);
-	console.log(pointData);*/
+	//console.log("HI\n");
+	//console.log(data[0]);
 	
 	pointSeries.bullets.push(function () {
 					var circle = am5.Circle.new(root, {
