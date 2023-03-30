@@ -72,6 +72,7 @@ am5.ready(function() {
 	  "name": "Beijing"
 	}]);
 
+	//EXAMPLE FOR DB CALL
     $.post("/db", {query: "SELECT * FROM csvjson"}, function(res, req, status) {
         console.log(res[0].TITLE);
         //pointSeries.data.setAll(res.body);
