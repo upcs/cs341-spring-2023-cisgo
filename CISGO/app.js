@@ -5,10 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var AdminJS = require('adminjs');
 var AdminJSExpress = require('@adminjs/express');
+const { Database, Resource } = require('@adminjs/mikroorm');
+const {MikroORM} = require('@mikro-orm/core');
+//import { validate } from 'class-validator';
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dbRouter = require('./routes/db');
+
+const PORT = process.env.PORT ?? 3000;
 //var adminRouter = require('./routes/admin');
 
 
@@ -19,6 +24,39 @@ const adminJs = new AdminJS({
   rootPath: '/admin'
 })
 const adminRouter = AdminJSExpress.buildRouter(adminJs);
+
+const run = async () => {
+  /* Initialize MikroORM like you would do normally, you can also import your MikroORM instance from a separate file */
+  const orm = await MikroORM.init({
+    //entities: [User, Car, Seller], // use your own entities
+    dbName: 'cisgo',
+    type: 'mariadb',
+    clientUrl: '10.13.6.44',
+    user: 'cisgouser',
+    password: "cisgo"
+  });
+
+  /* Optional: if you're using class-validator, assign it to Resource */
+  Resource.validate = validate;
+  /* Tell AdminJS which adapter to use */
+  AdminJS.registerAdapter({ Database, Resource });
+
+  //const app = express();
+
+  /* Create AdminJS instance */
+  const admin = new AdminJS({
+    databases: [orm],
+  });
+
+  const router = AdminJSExpress.buildRouter(admin);
+
+  app.use(admin.options.rootPath, router);
+
+  app.listen(PORT, () => {
+    console.log(`App listening at http://localhost:${PORT}`);
+  });
+}
+
 app.use(adminJs.options.rootPath, adminRouter);
 
 // view engine setup
