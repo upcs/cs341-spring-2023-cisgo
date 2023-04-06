@@ -119,6 +119,8 @@ am5.ready(function () {
 			var sidebarLinks = document.getElementById("mySidebar");
 
 			sidebarLinks.textContent = markerDetails;
+			sidebarLinks.style.fontSize = "16px";
+    		sidebarLinks.style.color = "white";
 
 			ttt.setText(markerData);
 		});
