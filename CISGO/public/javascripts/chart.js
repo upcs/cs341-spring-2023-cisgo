@@ -28,7 +28,8 @@ am5.ready(function () {
 	// https://www.amcharts.com/docs/v5/charts/map-chart/
 	var chart = root.container.children.push(am5map.MapChart.new(root, {
 		panX: "rotateX",
-		panY: "rotateY",
+		// panY: "rotateY",
+		// projection: am5map.geoOrthographic()
 		projection: am5map.geoOrthographic()
 	}));
 
@@ -59,6 +60,11 @@ am5.ready(function () {
 		fillOpacity: 0.15,
 		strokeWidth: 0.25,
 		stroke: root.interfaceColors.get("background")
+	});
+	
+	// change color on hover for countries 
+	polygonSeries.mapPolygons.template.states.create("hover", {
+	  fill: am5.color(0xF90349) //F90349
 	});
 
 	// Create point series
