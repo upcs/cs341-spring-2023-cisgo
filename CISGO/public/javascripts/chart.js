@@ -121,7 +121,11 @@ am5.ready(function () {
 		circle.events.on("click", function (ev) {
 			var markerData = ev.target.dataItem.dataContext;
 			var markerDetails = "Name: " + markerData.name + ", What: " + markerData.what + ", Org: " + markerData.org + ", Purpose: " + markerData.purpose;
-			sidebarElement.innerHTML = markerDetails;
+			// Get the sidebar links
+			var sidebarLinks = document.getElementById("mySidebar");
+
+			sidebarLinks.textContent = markerDetails;
+
 			ttt.setText(markerData);
 		});
 
