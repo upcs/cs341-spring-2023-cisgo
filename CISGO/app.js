@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const AdminJS = require('adminjs');
 const AdminJSExpress = require('@adminjs/express');
+const { componentLoader, Components } = require('./components');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -48,7 +49,12 @@ const PORT = 3001
 
 const adminApp = express()
 
-const admin = new AdminJS({})
+const admin = new AdminJS({
+  dashboard: {
+    component: Components.Dashboard
+  },
+  componentLoader,
+})
 
 const adminRouter = AdminJSExpress.buildRouter(admin)
   adminApp.use(admin.options.rootPath, adminRouter)
