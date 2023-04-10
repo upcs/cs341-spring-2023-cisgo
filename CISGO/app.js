@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const AdminJS = require('adminjs');
+const AdminJSExpress = require('@adminjs/express');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -40,4 +42,17 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+const PORT = 3001
+
+const adminApp = express()
+
+const admin = new AdminJS({})
+
+const adminRouter = AdminJSExpress.buildRouter(admin)
+  adminApp.use(admin.options.rootPath, adminRouter)
+
+  adminApp.listen(PORT, () => {
+    console.log(`AdminJS started on http://localhost:${PORT}${admin.options.rootPath}`)
+})
+
+module.exports = {app, adminApp};
