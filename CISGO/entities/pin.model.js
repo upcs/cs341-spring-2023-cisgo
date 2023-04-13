@@ -34,4 +34,6 @@ sequelize.sync().then(() => {
 
 // the defined model is the class itself
 console.log(Pin === sequelize.models.Pin); // true
-module.exports = Pin
+module.exports = {
+  Pin: Pin
+}

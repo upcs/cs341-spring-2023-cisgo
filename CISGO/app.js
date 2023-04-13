@@ -63,7 +63,7 @@ const start = async () => {
       component: Components.Dashboard
     },
     componentLoader,
-    resources: [Pin],
+    resources: [Pin]
   })
 
   const adminRouter = AdminJSExpress.buildRouter(admin)
