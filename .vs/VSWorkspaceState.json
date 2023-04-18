@@ -3,8 +3,9 @@
     "",
     "\\CISGO",
     "\\CISGO\\public",
+    "\\CISGO\\public\\javascripts",
     "\\CISGO\\public\\stylesheets"
   ],
-  "SelectedNode": "\\CISGO\\package.json",
+  "SelectedNode": "\\CISGO\\public\\javascripts\\chart.js",
   "PreviewInSolutionExplorer": false
 }
