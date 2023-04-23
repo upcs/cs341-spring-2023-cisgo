@@ -5,7 +5,7 @@ var mysql = require('mysql');
 router.post('/', function(req, res, next) {
     var con = mysql.createConnection({
         host: "cisgodb.mariadb.database.azure.com",
-        user: "cisgouser",
+        user: "cisgouser@cisgodb",
         password: "cisgo",
         database: "interactivemap"
     })
