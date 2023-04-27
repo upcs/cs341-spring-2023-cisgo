@@ -17,8 +17,8 @@ echo "Done!"
 #npm install pm2@latest -g
 #echo "Done!"
 
-#echo "Cloning git"
-#git clone https://github.com/upcs/cs341-spring-2023-cisgo.git
+echo "Cloning git"
+git clone -b rhoades26-patch-1 https://github.com/upcs/cs341-spring-2023-cisgo.git
 
 echo "Installing MariaDB"
 apt install mariadb-server
@@ -45,7 +45,7 @@ Type=simple
 User=root
 WorkingDirectory=/root
 Environment=NODE_ENV=production
-ExecStart=/usr/bin/cs341-spring-2023-cisgo/node app.js
+ExecStart=/usr/bin/cs341-spring-2023-cisgo/CISGO/node app.js
 
 Restart=always
 
