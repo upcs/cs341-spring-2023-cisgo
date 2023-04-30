@@ -24,6 +24,10 @@ echo "Installing MariaDB"
 apt install mariadb-server
 mysql_secure_installation
 
+echo "Installing npm packages"
+cs341-spring-2023-cisgo/CISGO/npm install
+echo "Done!"
+
 echo "Starting MariaDB as service"
 systemctl start mariadb.service
 
