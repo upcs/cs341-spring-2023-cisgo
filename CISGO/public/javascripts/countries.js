@@ -1964,22 +1964,40 @@ function findCoordsByName(countryName) {
 
 function retrieveCountries() {
     return new Promise(function (resolve, reject) {
-        var Countries = [];
+        var countries = [];
         $.post("/db", { query: "SELECT * FROM Pins" }, function (res, req, status) {
             for (let i = 0; i < res.length; i++) {
-                Countries[i] = res[i].country;
-                if (res[i].COUNTRY == "USA") {
-                    Countries[i] = "United States";
+                var row = [];
+                row.push(res[i].name);
+                row.push(res[i].email);
+                row.push(res[i].country);
+                row.push(res[i].start_date);
+                row.push(res[i].end_date);
+                row.push(res[i].finished);
+                row.push(res[i].S_U_D);
+                row.push(res[i].eng_type);
+                row.push(res[i].time);
+                row.push(res[i].desc);
+                row.push(res[i].link);
+                row.push(res[i].stu_inv);
+                row.push(res[i].stu_role);
+                row.push(res[i].emailme);
+                if (res[i].time.includes('Past')) {
+                    row.push("#FFE7FF");
                 }
-                if (res[i].COUNTRY == "Placerat sed. Erat. Magna nullam molestie! Dolor dictumst dui interdum ipsum. Vehicula! Vel quis.") {
-                    Countries[i] = "China";
+                else if (res[i].time.includes('Present')) {
+                    row.push("#FE44FE");
                 }
-                if (res[i].COUNTRY == "Tempora posuere nec dignissim ullamcorper tincidunt laoreet sagittis? Neque sem leo iaculis.") {
-                    Countries[i] = "Japan";
+                else if (res[i].time.includes('Future')) {
+                    row.push("#CB4AF8");
                 }
+                else {
+                    row.push("#FFFFFF");
+                }
+                countries.push(row);
             }
-            console.log(Countries);
-            resolve(Countries);
+            console.log(countries);
+            resolve(countries);
         }).fail(function () {
             reject(new Error("Failed to retrieve countries"));
         });
@@ -1987,7 +2005,7 @@ function retrieveCountries() {
 }
 
 var countries = retrieveCountries();
-console.log(countries);
+//console.log(countries);
 retrieveCountries().then(function (countries) {
-    console.log(countries);
+//console.log(countries);
 });
