@@ -13,12 +13,9 @@ echo "Building node"
 apt install build-essential
 echo "Done!"
 
-#echo "Installing pm2 to run app as service"
-#npm install pm2@latest -g
-#echo "Done!"
 
 echo "Cloning git"
-git clone -b rhoades26-patch-1 https://github.com/upcs/cs341-spring-2023-cisgo.git
+git clone https://github.com/upcs/cs341-spring-2023-cisgo.git
 
 echo "Installing MariaDB"
 apt install mariadb-server
