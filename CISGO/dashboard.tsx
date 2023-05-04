@@ -1,3 +1,4 @@
+//Template dashboard edited to remove clutter
 import React from 'react'
 import styled from 'styled-components'
 import {
@@ -65,7 +66,7 @@ type BoxType = {
 
 const boxes = ({ translateMessage }): Array<BoxType> => [{
   variant: 'Planet',
-  title: "hi",
+  title: "AdminJS",
   subtitle: translateMessage('addingResources_subtitle'),
   href: 'https://adminjs.co/tutorial-passing-resources.html',
 }]
