@@ -1,0 +1,77 @@
+<!Author: Alexander Melemai, Grant Stone Date: 3/23/23 Course: Software Engineering>
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<script type="text/javascript" src=http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js></script>
+		<title>CISGO Interactive Map</title>
+		<link rel="stylesheet" href="stylesheets/cisgo.css">
+	</head>
+
+	<body>
+
+		<h1>
+			<center>CISGO Interactive Map</center>
+		</h1>
+
+		<!-- amChart Map code starts -->
+		<!-- Resources -->
+		<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+		<script src="javascripts/countries.js"></script>
+		<script src="javascripts/chart.js"></script>
+
+		<div id="mySidebar" class="sidebar">
+			<a href="#">Map information will show up here</a>
+		</div>
+
+		<div id="main">
+			<button class="openbtn" onclick="openNav()">☰ Click Here For Map Info</button>
+		</div>
+
+
+
+		<!-- Chart code -->
+		<script src="javascripts/chart.js"></script>
+
+		<!-- HTML -->
+		<div class="parent" id="chartdiv"></div>
+
+		<table class="child">
+
+
+			<tr>
+				<td><button class="button button1">Past</button></td>
+			</tr>
+			<tr>
+				<td><button class="button button2">Present</button></td>
+			</tr>
+			<tr>
+				<td><button class="button button3">Future</button></td>
+			</tr>
+
+
+		</table>
+		<table class="child2">
+			<tr>
+				<td align="right"><button class="button button4">Up and Other Service</button></td>
+			</tr>
+			<tr>
+				<td align="right"><button class="button button5">Teaching and Study Abroad</button></td>
+			</tr>
+			<tr>
+				<td align="right"><button class="button button6">Global Research</button></td>
+			</tr>
+			<tr>
+				<td align="right"><button class="button button7">Collaborative Teamwork</button></td>
+			</tr>
+		</table>
+
+
+
+	</body>
+
+	</html>
