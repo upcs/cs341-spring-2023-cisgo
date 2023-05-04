@@ -175,22 +175,37 @@ am5.ready(function () {
 
     var newPoint = new Object();
     var pointData = [];
-    retrieveCountries().then(array => {
-        console.log(array);
-        array.forEach(function (array, index) {
+    retrieveCountries().then(countries => {
+        console.log(countries);
 
-            console.log(array);
-            newPoint = findCoordsByName(array);
+        countries.forEach(function (row, index) {
+            var countryName = row[2];
+
+            console.log(countryName);
+
+            newPoint = findCoordsByName(countryName);
+
             if (newPoint) {
                 pointData.push({
                     "geometry": {
                         "type": "Point",
                         "coordinates": [newPoint[1], newPoint[2]]
                     },
-                    "name": array,
-                    "what": "gja",
-                    "org": "U of New York",
-                    "purpose": "Build Trees"
+                    "country": row[2],
+                    "start_date": row[3],
+                    "end_date": row[4],
+                    "finished": row[5],
+                    "S_U_D": row[6],
+                    "eng_type": row[7],
+                    "time": row[8],
+                    "desc": row[9],
+                    "link": row[10],
+                    "stu_inv": row[11],
+                    "stu_role": row[12],
+                    "color": row[14],
+                    //bulletSettings: {
+                    //    fill: am5.color(row[14])
+                    //}
                 });
 
                 //String value = (String) jsonObject. get("key_name"); 
@@ -214,7 +229,7 @@ am5.ready(function () {
         // https://www.amcharts.com/docs/v5/charts/map-chart/
         var chart = root.container.children.push(am5map.MapChart.new(root, {
             panX: "rotateX",
-            // panY: "rotateY",
+            panY: "rotateY",
             // projection: am5map.geoOrthographic()
             projection: am5map.geoOrthographic()
         }));
@@ -262,14 +277,25 @@ am5.ready(function () {
             var circle = am5.Circle.new(root, {
                 radius: 5,
                 fill: am5.color(0xffba00),
-                tooltipText: "name",
+                tooltipText: "{country}",
             });
 
             var ttt = circle.tooltipText;
 
             circle.events.on("click", function (ev) {
                 var markerData = ev.target.dataItem.dataContext;
-                var markerDetails = "Name: " + markerData.name + ", What: " + markerData.what + ", Org: " + markerData.org + ", Purpose: " + markerData.purpose;
+                var markerDetails =
+                    "Country: " + markerData.country + "\n" +
+                    "Start Date: " + markerData.start_date + "\n" +
+                    "End Date: " + markerData.end_date + "\n" +
+                    "Finished: " + markerData.finished + "\n" +
+                    "S_U_D: " + markerData.S_U_D + "\n" +
+                    "Engagement Type: " + markerData.eng_type + "\n" +
+                    "Time: " + markerData.time + "\n" +
+                    "Description: " + markerData.desc + "\n" +
+                    "Link: " + markerData.link + "\n" +
+                    "Student Involvement: " + markerData.stu_inv + "\n" +
+                    "Student Role: " + markerData.stu_role + "\n";  
                 // Get the sidebar links
                 var sidebarLinks = document.getElementById("mySidebar");
 
