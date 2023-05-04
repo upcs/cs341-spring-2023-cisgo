@@ -2008,4 +2008,6 @@ var countries = retrieveCountries();
 //console.log(countries);
 retrieveCountries().then(function (countries) {
 //console.log(countries);
+
 });
+
