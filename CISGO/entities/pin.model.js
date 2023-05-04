@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../sequelizer');
-
+//sets up database and creates class based off columns
 class Pin extends Model {}
 
 Pin.init({
