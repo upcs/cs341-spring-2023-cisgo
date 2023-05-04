@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 
+//database access for general purpose
 router.post('/', function(req, res, next) {
     var con = mysql.createConnection({
         host: "cisgodb.mariadb.database.azure.com",
