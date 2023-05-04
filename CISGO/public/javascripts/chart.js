@@ -52,14 +52,12 @@ am5.ready(function () {
                     //bulletSettings: {
                     //    fill: am5.color(row[14])
                     //}
-
-                    
                 });
 
                 //console.log("Name: " + JSON.stringify(pointData));
             }
         });
-
+    
         // Create root element
         // https://www.amcharts.com/docs/v5/getting-started/#Root_element
         var root = am5.Root.new("chartdiv");
@@ -115,12 +113,6 @@ am5.ready(function () {
             fill: am5.color(0xF90349) //F90349
         });
 
-var bulletTemplate = am5.Template.new({
-            // This will be default fill for bullets that do not have
-            // it set via templateField
-            fill: am5.color(0xFFFFFF)
-        });
-
         // Create point series
         var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
@@ -137,7 +129,6 @@ var bulletTemplate = am5.Template.new({
 
             circle.events.on("click", function (ev) {
                 var markerData = ev.target.dataItem.dataContext;
-
                 var markerDetails =
                     "Country: " + markerData.country + "\n" +
                     "Start Date: " + markerData.start_date + "\n" +
@@ -149,11 +140,9 @@ var bulletTemplate = am5.Template.new({
                     "Description: " + markerData.desc + "\n" +
                     "Link: " + markerData.link + "\n" +
                     "Student Involvement: " + markerData.stu_inv + "\n" +
-                    "Student Role: " + markerData.stu_role + "\n";
-
+                    "Student Role: " + markerData.stu_role + "\n";  
 
                 // Get the sidebar links
-
                 var sidebarLinks = document.getElementById("mySidebar");
 
                 sidebarLinks.textContent = markerDetails;
@@ -164,10 +153,7 @@ var bulletTemplate = am5.Template.new({
             });
 
             return am5.Bullet.new(root, {
-                sprite: am5.Circle.new(root, {
-                    radius: 5,
-                    templateField: "bulletSettings"
-                }, bulletTemplate)
+                sprite: circle
             });
         });
 
@@ -176,4 +162,3 @@ var bulletTemplate = am5.Template.new({
         chart.appear(1000, 100);
     });
 }); // end am5.ready()
-
