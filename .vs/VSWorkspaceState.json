@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\CISGO",
+    "\\CISGO\\entities",
     "\\CISGO\\public",
     "\\CISGO\\public\\javascripts",
     "\\CISGO\\public\\stylesheets"
   ],
-  "SelectedNode": "\\CISGO\\app.js",
+  "SelectedNode": "\\CISGO\\entities\\pin.model.js",
   "PreviewInSolutionExplorer": false
 }
