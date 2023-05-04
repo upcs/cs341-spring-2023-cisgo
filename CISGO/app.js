@@ -48,14 +48,14 @@ app.use(function (err, req, res, next) {
 });
 
 const PORT = 3001
-
+//set up the sequelize adapter
 AdminJS.registerAdapter({
   Resource: AdminJSSequelize.Resource,
   Database: AdminJSSequelize.Database,
 })
 
 const adminApp = express()
-
+//start adminjs
 const start = async () => {
   
   const admin = new AdminJS({
