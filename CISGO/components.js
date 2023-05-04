@@ -1,10 +1,9 @@
 var { ComponentLoader } = require('adminjs')
 
 const componentLoader = new ComponentLoader()
-
+//sets up custom dashboard as component for adminjs
 const Components = {
     Dashboard: componentLoader.add('Dashboard', './dashboard'),
-    //MyInput: componentLoader.add('MyInput', './my-input'),
     // other custom components
 }
 
