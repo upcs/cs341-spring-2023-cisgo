@@ -142,9 +142,19 @@ am5.ready(function () {
                     "Description: " + markerData.desc + "\n" +
                     "Link: " + markerData.link + "\n" +
                     "Student Involvement: " + markerData.stu_inv + "\n" +
-                    "Student Role: " + markerData.stu_role + "\n";  
+                    "Student Role: " + markerData.stu_role + "\n";
 
-                var markerDetails = markerData.country + markerData.start_date + markerData.end_date + markerData.finished + markerData.S_U_D + markerData.eng_type + markerData.time + markerData.desc + markerData.link + markerData.stu_inv + markerData.stu_role;
+                var markerDetails = "Country: " + markerData.country + "\n" +
+                    "Start Date: " + markerData.start_date + "\n" +
+                    "End Date: " + markerData.end_date + "\n" +
+                    "Finished: " + markerData.finished + "\n" +
+                    "S_U_D: " + markerData.S_U_D + "\n" +
+                    "Engagement Type: " + markerData.eng_type + "\n" +
+                    "Time: " + markerData.time + "\n" +
+                    "Description: " + markerData.desc + "\n" +
+                    "Link: " + markerData.link + "\n" +
+                    "Student Involvement: " + markerData.stu_inv + "\n" +
+                    "Student Role: " + markerData.stu_role + "\n";
 
 
                 // Get the sidebar links
